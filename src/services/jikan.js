@@ -1,5 +1,5 @@
-// Base address of the Jikan API (stored once so we don't repeat it)
-const BASE_URL = 'https://api.jikan.moe/v4'
+// Mirror of the Jikan v4 API (same endpoints, different address)
+const BASE_URL = 'https://api.tenrai.org/v1'
 
 // Searches anime by name. "async" because it waits for the internet.
 export async function searchAnime(query) {
