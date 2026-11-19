@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
 function Login() {
   const { login, loginWithGoogle } = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -48,6 +49,9 @@ function Login() {
   return (
     <div className="max-w-sm mx-auto mt-12 p-4">
       <h1 className="text-2xl font-bold text-center text-indigo-600">Log in</h1>
+      {location.state?.message && (
+  <p className="text-green-600 mt-4 text-center">{location.state.message}</p>
+)}
 
       {error && <p role="alert" className="text-red-600 mt-4 text-center">{error}</p>}
 
