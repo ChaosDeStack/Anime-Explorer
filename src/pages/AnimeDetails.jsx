@@ -1,20 +1,24 @@
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getAnimeById } from '../services/jikan'
+import { useAuth } from '../context/AuthContext'
+import {
+  addToWatchlist,
+  removeFromWatchlist,
+  listenToWatchlist,
+} from '../services/watchlist'
 
 function AnimeDetails() {
-  // useParams reads the :id part of the URL (/anime/:id)
   const { id } = useParams()
-
-  // navigate(-1) goes back one page in the browser history,
-  // which brings back the search results (/?q=naruto)
   const navigate = useNavigate()
+  const { user } = useAuth() // null if logged out
 
-  const [anime, setAnime] = useState(null)   // the anime we fetched
-  const [loading, setLoading] = useState(true) // true while fetching
-  const [error, setError] = useState('')       // error message, if any
+  const [anime, setAnime] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+  const [saved, setSaved] = useState(false) // is it in the watchlist?
 
-  // useEffect runs code when the page opens (and when id changes)
+  // Fetch the anime when the page opens (and when id changes)
   useEffect(() => {
     async function loadAnime() {
       try {
@@ -27,7 +31,29 @@ function AnimeDetails() {
       }
     }
     loadAnime()
-  }, [id]) // dependency array: re-run only if id changes
+  }, [id])
+
+  // If logged in, check whether this anime is already in the watchlist
+  useEffect(() => {
+    if (!user) return
+    const unsubscribe = listenToWatchlist(user.uid, (list) => {
+      setSaved(list.some((item) => String(item.mal_id) === String(id)))
+    })
+    return unsubscribe
+  }, [user, id])
+
+  // Add or remove depending on the current state
+  async function handleWatchlist() {
+    try {
+      if (saved) {
+        await removeFromWatchlist(user.uid, id)
+      } else {
+        await addToWatchlist(user.uid, anime)
+      }
+    } catch {
+      setError('Could not update your watchlist. Try again.')
+    }
+  }
 
   if (loading) return <p className="text-center mt-10">Loading...</p>
   if (error) return <p className="text-center mt-10 text-red-600">{error}</p>
@@ -53,7 +79,6 @@ function AnimeDetails() {
             Score: {anime.score ?? 'N/A'} | Episodes: {anime.episodes ?? '?'} | {anime.status}
           </p>
 
-          {/* Genres is an array, so we map it into small labels */}
           <div className="flex flex-wrap gap-2 mt-3">
             {anime.genres.map((g) => (
               <span
@@ -64,6 +89,20 @@ function AnimeDetails() {
               </span>
             ))}
           </div>
+
+          {/* Logged in: add/remove button. Logged out: link to login. */}
+          {user ? (
+            <button
+              onClick={handleWatchlist}
+              className="mt-4 bg-indigo-600 text-white px-4 py-2 rounded"
+            >
+              {saved ? 'Remove from watchlist' : 'Add to watchlist'}
+            </button>
+          ) : (
+            <Link to="/login" className="inline-block mt-4 text-indigo-600 underline">
+              Log in to save this anime
+            </Link>
+          )}
 
           <p className="mt-4">{anime.synopsis}</p>
         </div>
