@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-// onSearch is a function passed down from App (a prop)
-function SearchBar({ onSearch }) {
+// initialValue lets the box start with the current search word
+function SearchBar({ onSearch, initialValue = '' }) {
   // State: stores what the user is typing
-  const [text, setText] = useState('')
+  const [text, setText] = useState(initialValue)
 
   // Runs when the form is submitted
   function handleSubmit(e) {
