@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { getAnimeById } from '../services/jikan'
 
 function AnimeDetails() {
   // useParams reads the :id part of the URL (/anime/:id)
   const { id } = useParams()
-
+  const navigate = useNavigate()
   const [anime, setAnime] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -30,7 +30,12 @@ function AnimeDetails() {
 
   return (
     <div className="max-w-3xl mx-auto p-4">
-      <Link to="/" className="text-indigo-600">← Back to search</Link>
+      <button
+        onClick={() => navigate('/')}
+        className="text-indigo-600 hover:text-indigo-800"
+      >
+        ← Back to results
+      </button                                                                          >
       <div className="flex flex-col md:flex-row gap-6 mt-4">
         <img
           src={anime.images.jpg.large_image_url}
