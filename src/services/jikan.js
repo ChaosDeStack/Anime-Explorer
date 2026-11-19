@@ -17,3 +17,11 @@ export async function searchAnime(query) {
   // The list of anime is inside the "data" property
   return json.data
 }
+
+// Gets ONE anime by its id (used by the details page)
+export async function getAnimeById(id) {
+  const res = await fetch(`${BASE_URL}/anime/${id}`)
+  if (!res.ok) throw new Error('Failed to fetch anime details')
+  const json = await res.json()
+  return json.data
+}
