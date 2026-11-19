@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { getAnimeById } from '../services/jikan'
 
 function AnimeDetails() {
   // useParams reads the :id part of the URL (/anime/:id)
   const { id } = useParams()
 
-  const [anime, setAnime] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
+  // navigate(-1) goes back one page in the browser history,
+  // which brings back the search results (/?q=naruto)
+  const navigate = useNavigate()
+
+  const [anime, setAnime] = useState(null)   // the anime we fetched
+  const [loading, setLoading] = useState(true) // true while fetching
+  const [error, setError] = useState('')       // error message, if any
 
   // useEffect runs code when the page opens (and when id changes)
   useEffect(() => {
@@ -30,7 +34,13 @@ function AnimeDetails() {
 
   return (
     <div className="max-w-3xl mx-auto p-4">
-      <Link to="/" className="text-indigo-600">← Back to search</Link>
+      <button
+        onClick={() => navigate(-1)}
+        className="text-indigo-600 hover:text-indigo-800"
+      >
+        ← Back to results
+      </button>
+
       <div className="flex flex-col md:flex-row gap-6 mt-4">
         <img
           src={anime.images.jpg.large_image_url}
@@ -42,14 +52,19 @@ function AnimeDetails() {
           <p className="text-gray-600 mt-1">
             Score: {anime.score ?? 'N/A'} | Episodes: {anime.episodes ?? '?'} | {anime.status}
           </p>
+
           {/* Genres is an array, so we map it into small labels */}
           <div className="flex flex-wrap gap-2 mt-3">
             {anime.genres.map((g) => (
-              <span key={g.mal_id} className="bg-indigo-100 text-indigo-700 px-2 py-1 rounded text-sm">
+              <span
+                key={g.mal_id}
+                className="bg-indigo-100 text-indigo-700 px-2 py-1 rounded text-sm"
+              >
                 {g.name}
               </span>
             ))}
           </div>
+
           <p className="mt-4">{anime.synopsis}</p>
         </div>
       </div>
