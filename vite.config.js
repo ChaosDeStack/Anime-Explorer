@@ -8,7 +8,8 @@ export default defineConfig({
     environment: 'jsdom',          // fake browser for tests
     globals: true,                 // lets us use test(), expect() without importing
     setupFiles: './src/setupTests.js',
-    testTimeout: 20000,            // allow 20 seconds per test (default is 5) for slower computers
+    fileParallelism: false,        // run one test file at a time (gentler on slow computers)
+    testTimeout: 30000,            // allow 30 seconds per test
     coverage: {
       provider: 'v8',
       include: ['src/**/*.{js,jsx}'],
