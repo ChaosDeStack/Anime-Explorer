@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function AnimeCard({ anime }) {
   return (
     // Link changes the URL without reloading the page
-    <Link to={`/anime/${anime.mal_id}`} className="block border rounded shadow overflow-hidden hover:shadow-lg">
+    <Link to={`/anime/${anime.mal_id}`} className="block border rounded shadow overflow-hidden bg-slate-900 transition hover:border-cyan-400">
       <img
         src={anime.images.jpg.image_url}
         alt={anime.title}
