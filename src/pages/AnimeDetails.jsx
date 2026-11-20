@@ -62,7 +62,7 @@ function AnimeDetails() {
     <div className="max-w-3xl mx-auto p-4">
       <button
         onClick={() => navigate(-1)}
-        className="text-rose-600 hover:text-rose-300"
+        className="text-rose-400 hover:text-rose-300"
       >
         ← Back to results
       </button>
@@ -99,7 +99,7 @@ function AnimeDetails() {
               {saved ? 'Remove from watchlist' : 'Add to watchlist'}
             </button>
           ) : (
-            <Link to="/login" className="inline-block mt-4 text-rose-600 underline">
+            <Link to="/login" className="inline-block mt-4 text-rose-400 underline">
               Log in to save this anime
             </Link>
           )}

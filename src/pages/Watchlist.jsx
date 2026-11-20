@@ -27,7 +27,7 @@ function Watchlist() {
 
   return (
     <div className="max-w-3xl mx-auto p-4">
-      <h1 className="text-2xl font-bold text-rose-600">My Watchlist</h1>
+      <h1 className="text-2xl font-bold text-rose-400">My Watchlist</h1>
 
       {/* Empty state */}
       {items.length === 0 && (
@@ -42,7 +42,7 @@ function Watchlist() {
             <img src={item.image} alt={item.title} className="w-16 h-24 object-cover rounded" />
 
             <div className="flex-1">
-              <Link to={`/anime/${item.mal_id}`} className="font-bold text-rose-600">
+              <Link to={`/anime/${item.mal_id}`} className="font-bold text-rose-400">
                 {item.title}
               </Link>
               <p className="text-sm text-slate-600">

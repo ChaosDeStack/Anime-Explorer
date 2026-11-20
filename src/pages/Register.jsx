@@ -47,7 +47,7 @@ function Register() {
 
   return (
     <div className="max-w-sm mx-auto mt-12 p-4">
-      <h1 className="text-2xl font-bold text-center text-rose-600">Create account</h1>
+      <h1 className="text-2xl font-bold text-center text-rose-400">Create account</h1>
 
       {/* role="alert" makes screen readers announce the error */}
       {error && <p role="alert" className="text-red-400 mt-4 text-center">{error}</p>}
@@ -75,7 +75,7 @@ function Register() {
       </form>
 
       <p className="text-center mt-4">
-        Already have an account? <Link to="/login" className="text-rose-600">Log in</Link>
+        Already have an account? <Link to="/login" className="text-rose-400">Log in</Link>
       </p>
     </div>
   )

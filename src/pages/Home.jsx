@@ -44,7 +44,7 @@ function Home() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-center text-rose-600 mt-8">
+      <h1 className="text-3xl font-bold text-center text-rose-400 mt-8">
         Anime Explorer
       </h1>
       {/* initialValue keeps the search word inside the input box */}
