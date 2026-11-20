@@ -12,7 +12,7 @@ function AnimeCard({ anime }) {
       />
       <div className="p-3">
         <h2 className="font-bold">{anime.title}</h2>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-slate-600">
           Score: {anime.score ?? 'N/A'} | Episodes: {anime.episodes ?? '?'}
         </p>
       </div>
