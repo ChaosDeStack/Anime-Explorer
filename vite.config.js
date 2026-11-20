@@ -15,13 +15,8 @@ export default defineConfig({
       include: ['src/**/*.{js,jsx}'],
       // Files that only connect to Firebase or start the app are not tested
       exclude: ['src/main.jsx', 'src/setupTests.js', 'src/firebase.js', 'src/**/*.test.{js,jsx}'],
-          coverage: {
-      provider: 'v8',
-      include: ['src/**/*.{js,jsx}'],
-      exclude: ['src/main.jsx', 'src/setupTests.js', 'src/firebase.js', 'src/**/*.test.{js,jsx}'],
       // If coverage drops below 65%, the coverage command fails
       thresholds: { statements: 65, branches: 65, functions: 65, lines: 65 },
-    },
     },
   },
 })
