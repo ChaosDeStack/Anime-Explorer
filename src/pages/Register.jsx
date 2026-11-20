@@ -47,10 +47,10 @@ function Register() {
 
   return (
     <div className="max-w-sm mx-auto mt-12 p-4">
-      <h1 className="text-2xl font-bold text-center text-indigo-600">Create account</h1>
+      <h1 className="text-2xl font-bold text-center text-rose-600">Create account</h1>
 
       {/* role="alert" makes screen readers announce the error */}
-      {error && <p role="alert" className="text-red-600 mt-4 text-center">{error}</p>}
+      {error && <p role="alert" className="text-red-400 mt-4 text-center">{error}</p>}
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-3 mt-6">
         <label htmlFor="email">Email</label>
@@ -69,13 +69,13 @@ function Register() {
           className="border rounded px-3 py-2" />
 
         <button disabled={submitting}
-          className="bg-indigo-600 text-white py-2 rounded disabled:opacity-50">
+          className="bg-rose-600 text-white py-2 rounded disabled:opacity-50">
           {submitting ? 'Creating...' : 'Register'}
         </button>
       </form>
 
       <p className="text-center mt-4">
-        Already have an account? <Link to="/login" className="text-indigo-600">Log in</Link>
+        Already have an account? <Link to="/login" className="text-rose-600">Log in</Link>
       </p>
     </div>
   )

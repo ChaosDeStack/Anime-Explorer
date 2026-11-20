@@ -27,11 +27,11 @@ function Watchlist() {
 
   return (
     <div className="max-w-3xl mx-auto p-4">
-      <h1 className="text-2xl font-bold text-indigo-600">My Watchlist</h1>
+      <h1 className="text-2xl font-bold text-rose-600">My Watchlist</h1>
 
       {/* Empty state */}
       {items.length === 0 && (
-        <p className="mt-6 text-gray-500">
+        <p className="mt-6 text-slate-400">
           Nothing saved yet. Find an anime and click "Add to watchlist".
         </p>
       )}
@@ -42,10 +42,10 @@ function Watchlist() {
             <img src={item.image} alt={item.title} className="w-16 h-24 object-cover rounded" />
 
             <div className="flex-1">
-              <Link to={`/anime/${item.mal_id}`} className="font-bold text-indigo-600">
+              <Link to={`/anime/${item.mal_id}`} className="font-bold text-rose-600">
                 {item.title}
               </Link>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-slate-600">
                 Score: {item.score ?? 'N/A'} | Episodes: {item.episodes ?? '?'}
               </p>
 
@@ -65,7 +65,7 @@ function Watchlist() {
 
             <button
               onClick={() => removeFromWatchlist(user.uid, item.mal_id)}
-              className="text-red-600 text-sm"
+              className="text-red-400 text-sm"
             >
               Remove
             </button>

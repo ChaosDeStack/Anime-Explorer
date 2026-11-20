@@ -13,7 +13,7 @@ function Navbar() {
   }
 
   return (
-    <nav className="flex flex-wrap items-center justify-between gap-2 bg-indigo-600 text-white px-4 py-3">
+    <nav className="flex flex-wrap items-center justify-between gap-2 bg-rose-600 text-white px-4 py-3">
       <Link to="/" className="font-bold text-lg">Anime Explorer</Link>
 
       <div className="flex items-center gap-4">
@@ -23,7 +23,7 @@ function Navbar() {
         {user ? (
           <>
             <Link to="/watchlist">Watchlist</Link>
-            <button onClick={handleLogout} className="bg-white text-indigo-600 px-3 py-1 rounded">
+            <button onClick={handleLogout} className="bg-slate-950 text-cyan-300 px-3 py-1 rounded">
               Logout
             </button>
           </>

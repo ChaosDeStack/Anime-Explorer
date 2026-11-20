@@ -1,1 +1,22 @@
 @import "tailwindcss";
+
+/* Anime-night theme: dark navy base with a rose + cyan complementary pair */
+@layer base {
+  html {
+    color-scheme: dark; /* dark scrollbars and dropdowns */
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100;
+  }
+
+  /* Soft borders that suit a dark background */
+  *, ::after, ::before {
+    border-color: #334155;
+  }
+
+  /* Dark inputs and dropdowns */
+  input, select {
+    @apply bg-slate-800 text-slate-100;
+  }
+}

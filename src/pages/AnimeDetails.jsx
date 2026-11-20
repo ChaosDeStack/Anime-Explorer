@@ -56,13 +56,13 @@ function AnimeDetails() {
   }
 
   if (loading) return <p className="text-center mt-10">Loading...</p>
-  if (error) return <p className="text-center mt-10 text-red-600">{error}</p>
+  if (error) return <p className="text-center mt-10 text-red-400">{error}</p>
 
   return (
     <div className="max-w-3xl mx-auto p-4">
       <button
         onClick={() => navigate(-1)}
-        className="text-indigo-600 hover:text-indigo-800"
+        className="text-rose-600 hover:text-rose-300"
       >
         ← Back to results
       </button>
@@ -75,7 +75,7 @@ function AnimeDetails() {
         />
         <div>
           <h1 className="text-2xl font-bold">{anime.title}</h1>
-          <p className="text-gray-600 mt-1">
+          <p className="text-slate-600 mt-1">
             Score: {anime.score ?? 'N/A'} | Episodes: {anime.episodes ?? '?'} | {anime.status}
           </p>
 
@@ -83,7 +83,7 @@ function AnimeDetails() {
             {anime.genres.map((g) => (
               <span
                 key={g.mal_id}
-                className="bg-indigo-100 text-indigo-700 px-2 py-1 rounded text-sm"
+                className="bg-cyan-900 text-cyan-200 px-2 py-1 rounded text-sm"
               >
                 {g.name}
               </span>
@@ -94,12 +94,12 @@ function AnimeDetails() {
           {user ? (
             <button
               onClick={handleWatchlist}
-              className="mt-4 bg-indigo-600 text-white px-4 py-2 rounded"
+              className="mt-4 bg-rose-600 text-white px-4 py-2 rounded"
             >
               {saved ? 'Remove from watchlist' : 'Add to watchlist'}
             </button>
           ) : (
-            <Link to="/login" className="inline-block mt-4 text-indigo-600 underline">
+            <Link to="/login" className="inline-block mt-4 text-rose-600 underline">
               Log in to save this anime
             </Link>
           )}
