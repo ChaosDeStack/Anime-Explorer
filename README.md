@@ -2,7 +2,9 @@
 
 A responsive React web app for discovering anime. Search by name, read details, and save your favourites to a personal watchlist after logging in.
 
-**Live demo:** https://anime-explorer-black.vercel.app/ 
+**Live demo:** https://anime-explorer-black.vercel.app/
+
+**Figma wireframes:** https://www.figma.com/design/uGQ23W0F5a1liUJIXzCJCh/Anime-Explorer?node-id=0-1&t=u654wskfJvgi6UR3-1
 
 ## Features
 
@@ -29,6 +31,7 @@ A responsive React web app for discovering anime. Search by name, read details, 
 | External API | Jikan v4 anime API (through a v4-compatible mirror) |
 | Testing | Vitest and React Testing Library |
 | CI/CD | GitHub Actions and Vercel |
+| Design | Figma (wireframes) |
 
 ## User stories
 
